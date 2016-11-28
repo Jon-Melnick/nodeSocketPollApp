@@ -25,12 +25,11 @@ app.use(express.static('./node_modules/bootstrap/dist'));
 const server = app.listen(process.env.PORT || 3000);
 const io = require('socket.io').listen(server);
 
-io.configure(function () {
-  io.set("transports", ["xhr-polling"]);
-  io.set("polling duration", 10);
-});
 
 io.sockets.on('connection', (socket)=>{
+
+  io.set("transports", ["xhr-polling"]);
+  io.set("polling duration", 10);
 
   socket.once('disconnect', function(){
 
