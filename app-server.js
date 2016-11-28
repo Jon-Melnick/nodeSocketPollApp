@@ -20,7 +20,9 @@ let results = {
 app.use(express.static('./public'));
 app.use(express.static('./node_modules/bootstrap/dist'));
 
-const server = app.listen(3000);
+
+
+const server = app.listen(process.env.PORT || 3000);
 const io = require('socket.io').listen(server);
 
 io.sockets.on('connection', (socket)=>{
@@ -54,7 +56,7 @@ io.sockets.on('connection', (socket)=>{
     this.emit('joined', newMember);
     audience.push(newMember);
     io.sockets.emit('audience', audience);
-    console.log("Audience Joind %s", payload.name);
+    console.log("Audience Joined %s", payload.name);
   })
 
   socket.on('start', function(payload){
