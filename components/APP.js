@@ -22,7 +22,7 @@ class APP extends React.Component{
   }
 
   componentWillMount() {
-    this.socket = io('http://localhost:3000');
+    this.socket = io('https://socketnodepoll.herokuapp.com');
 
     this.socket.on('connect', ()=>{
       let member = (sessionStorage.member) ? JSON.parse(sessionStorage.member) : null;
