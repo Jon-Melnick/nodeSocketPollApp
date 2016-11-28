@@ -22,7 +22,7 @@ class APP extends React.Component{
   }
 
   componentWillMount() {
-    this.socket = io('https://localhost:3000');
+    this.socket = io('http://localhost:3000');
 
     this.socket.on('connect', ()=>{
       let member = (sessionStorage.member) ? JSON.parse(sessionStorage.member) : null;
